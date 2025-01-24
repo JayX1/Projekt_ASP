@@ -1,0 +1,48 @@
+﻿@model Superhero
+
+@{
+    ViewData["Title"] = "Create Superhero";
+    var availablePowers = ViewBag.AvailablePowers as Dictionary<int, string>;
+}
+
+<h1>Create Superhero</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="SuperheroName">Superhero Name</label>
+        <input asp-for="SuperheroName" class="form-control" />
+        <span asp-validation-for="SuperheroName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="FullName">Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="WeightKg">Weight (kg)</label>
+        <input asp-for="WeightKg" class="form-control" />
+        <span asp-validation-for="WeightKg" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="HeightCm">Height (cm)</label>
+        <input asp-for="HeightCm" class="form-control" />
+        <span asp-validation-for="HeightCm" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="selectedPowerIds">Select Powers</label>
+        <select name="selectedPowerIds" multiple="multiple" class="form-control">
+            @foreach (var power in ViewBag.AvailablePowers as Dictionary<int, string>)
+            {
+                <option value="@power.Key">@power.Value</option>
+            }
+        </select>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

@@ -1,0 +1,27 @@
+﻿@model List<(string, int)>
+
+<h1>Lista Supermocy</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nazwa Supermocy</th>
+            <th>Inni bohaterowie z tą mocą</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var power in Model)
+        {
+
+            <tr>
+                <th>@power.Item1</th>
+                <td>@power.Item2</td>
+            </tr>
+
+
+           
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-primary">Powrót</a>
